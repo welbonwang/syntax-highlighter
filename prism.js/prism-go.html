@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>Golang Syntax Highlighter ▲ Prism</title>
+<link rel="stylesheet" href="prism.css" data-noprefix />
+<script src="prism.js"></script>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+function render(){
+  var code = $("#src_code").val();
+  var new_code = code.replace(/\t/g, '    ');
+  $("#dst_code").html(Prism.highlight(new_code, Prism.languages.go));
+}
+</script>
+<style>
+textarea {
+  width: 100%;
+  height: 10em;
+  padding: 1em;
+  box-sizing: border-box;
+  margin: .5em 0;
+  background: #f5f2f0;
+  color: black;
+  text-shadow: 0 1px white;
+  tab-size: 4;
+  font: 100% Consolas, Monaco, monospace;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+table.render_result {
+  width: 40% !important;
+}
+
+tbody,
+tr,
+td,
+pre code {
+  font-size: 14px;
+  background-color: black;
+}
+</style>
+</head>
+
+<body>
+  <section><form>
+  <p><textarea id="src_code"></textarea></p>
+  <button type="button" onclick="render();">Syntax(Golang) Render</button><p>
+  <p>Result:</p>
+  <table border="0" cellpadding="0" cellspacing="0" class="render_result"><tbody><tr><td>
+    <pre><code class="language-go" id="dst_code"></code></pre>
+  </table></td></tr></tbody>
+  </form></section>
+</body>
+
+</html>
